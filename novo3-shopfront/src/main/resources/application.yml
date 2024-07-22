@@ -1,0 +1,23 @@
+server:
+  servlet:
+    context-path: /portal-service
+
+token:
+  timeout:
+    milliseconds: 1200000 #default 600000
+
+management:
+  security:
+    enabled: false
+    port: 9000
+
+init:
+  data: false
+
+report:
+  subject: Novo3 Portal - School Device Order Placement report - %s
+  message: Please fine the attached Order details details for %s
+
+xero:
+  update:
+    toggle: false

@@ -1,0 +1,62 @@
+buildscript {
+	repositories {
+		jcenter()
+	}
+	dependencies {
+		//This is necessary to use the gradle shadow plugin
+		classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.2'
+	}
+}
+
+plugins {
+	id 'org.springframework.boot' version '2.7.2'
+	id 'io.spring.dependency-management' version '1.0.12.RELEASE'
+	id 'java'
+}
+
+group = 'com.novo3.portal'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'io.jsonwebtoken:jjwt:0.9.1'
+	implementation 'org.apache.commons:commons-lang3:3.12.0'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation group: 'org.postgresql', name: 'postgresql', version: '42.4.2'
+	implementation 'org.springframework.boot:spring-boot-starter-mail:2.7.3'
+	implementation 'org.apache.poi:poi:3.9'
+	implementation 'org.apache.poi:poi-ooxml:3.9'
+	implementation 'org.jetbrains:annotations:20.1.0'
+
+	//access azure keyvault
+	implementation 'com.azure:azure-security-keyvault-secrets:4.8.3'
+	implementation 'com.azure:azure-identity:1.12.1'
+
+	compileOnly 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	runtimeOnly 'com.h2database:h2'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+
+
+	//compile group: 'org.controlsfx', name: 'controlsfx', version: '8.40.14'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

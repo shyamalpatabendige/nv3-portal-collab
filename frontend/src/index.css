@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .rizDivider {
+      @apply w-full bg-gray-300 h-0.5 my-2;
+    }
+    .my-table-spacing {
+      border-spacing: theme("spacing.3");
+    }
+    html, body #fullHeight, #fullHeight>div{
+      height: 100%;
+    }
+  }
+

@@ -1,0 +1,53 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+#  sql:
+#    init:
+#      mode: always
+#      data-locations: classpath:test-data.sql
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: emailserver.temp@gmail.com
+    password: znbhintpjravbmgh
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+report:
+  sender:
+    email: emailserver.temp@gmail.com
+    name: Novo3 Portal
+  receivers: madura.oneplus@gmail.com
+
+job:
+  cron:
+    expression: '*/59 * * * * *'
+
+init:
+  data: true
+
+logging:
+  level:
+    com:
+      novo3:
+        shopfront:
+          config:
+            LoggingInterceptor: DEBUG
+#psql "host=portal-db-svr.postgres.database.azure.com port=5432 dbname=postgres user=pirtalpgadmin password=B0lsh01B00z# sslmode=require"
+
+#Dt$U#R&C3I%0M
+
+#select parent_first_name, parent_last_name, email, created_on  from order_table;

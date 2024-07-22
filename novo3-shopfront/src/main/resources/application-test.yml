@@ -1,0 +1,33 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://db:5432/novo3-portal-db
+    #url: jdbc:h2:file:/data/demo
+    username: novo3-portal-usr
+    password: novo3-portal-password
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+#  sql:
+#    init:
+#      mode: always
+#      data-locations: classpath:test-data.sql
+
+token:
+  timeout:
+    milliseconds: 600000 #default 600000
+
+management:
+  security:
+    enabled: false
+    port: 9000
+
+report:
+  sender:
+    email: emailserver.temp333@gmail.com
+    name: Novo3 Portal
+  receivers: madura.one3333plus11123@gmail.com
+
+job:
+  cron:
+    expression: '0 0 8 * * *'
