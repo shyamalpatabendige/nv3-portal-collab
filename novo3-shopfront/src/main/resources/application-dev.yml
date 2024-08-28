@@ -1,19 +1,23 @@
+spring.jpa.defer-datasource-initialization: true
 spring:
   datasource:
     url: jdbc:h2:mem:testdb
-    driverClassName: org.h2.Driver
+    driver-class-name: org.h2.Driver
     username: sa
     password: password
-#  sql:
-#    init:
-#      mode: always
-#      data-locations: classpath:test-data.sql
-  jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
+    initialization-mode: always
+  sql:
+    init:
+      data-locations: classpath:data-dev.sql
   h2:
     console:
       enabled: true
-
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
   mail:
     host: smtp.gmail.com
     port: 587
@@ -28,13 +32,13 @@ spring:
 
 report:
   sender:
-    email: emailserver.temp@gmail.com
+    email: emailserver.temp111@gmail.com
     name: Novo3 Portal
-  receivers: madura.oneplus@gmail.com
+  receivers: madura.oneplus111@gmail.com
 
 job:
   cron:
-    expression: '*/59 * * * * *'
+    expression: '0 0 8 * * *'
 
 init:
   data: true

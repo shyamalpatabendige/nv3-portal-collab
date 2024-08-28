@@ -1,9 +1,6 @@
 package com.novo3.shopfront;
 
-import com.azure.identity.DefaultAzureCredentialBuilder;
-import com.azure.security.keyvault.secrets.SecretClient;
-import com.azure.security.keyvault.secrets.SecretClientBuilder;
-import com.azure.security.keyvault.secrets.models.KeyVaultSecret;
+import com.novo3.shopfront.api.base.UserRegistration;
 import com.novo3.shopfront.repository.ProductRepository;
 import com.novo3.shopfront.repository.SchoolRepository;
 import com.novo3.shopfront.repository.UserRepository;
@@ -11,22 +8,20 @@ import com.novo3.shopfront.repository.entity.FeatureEntity;
 import com.novo3.shopfront.repository.entity.ProductEntity;
 import com.novo3.shopfront.repository.entity.SchoolEntity;
 import com.novo3.shopfront.repository.entity.UserEntity;
+import com.novo3.shopfront.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.core.env.ConfigurableEnvironment;
-import org.springframework.core.env.MapPropertySource;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.annotation.PostConstruct;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Slf4j
 @SpringBootApplication
@@ -35,6 +30,9 @@ public class ShopfrontApplication {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private UserService userService;
 
     @Autowired
     private SchoolRepository schoolRepository;
@@ -71,6 +69,11 @@ public class ShopfrontApplication {
 
             userRepository.save(UserEntity.builder().username("testuser@mail.com").password(passwordEncoder.encode("testuser@123")).role("ROLE_ADMIN").build());
 
+            UserRegistration user = new UserRegistration();
+            user.setUsername("testuser@email.com");
+            user.setPassword("testuser@123");
+
+            userService.addUser(user);
 
             SchoolEntity school = schoolRepository.save(SchoolEntity.builder()
                     .code("BCC22")
