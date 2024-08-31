@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+
 import java.util.List;
 
 @RestController
@@ -45,8 +46,12 @@ public class ShopfrontController {
     public ResponseEntity<School> getSchoolId(@PathVariable @NotNull String code) {
 
         log.info("Search school using code={}", code);
-        School school = schoolService.getSchool(code.toUpperCase());
-
+        School school;
+        if (code.equals("BGS-NRP") || code.equals("MGS-NRP")) {
+            school = School.builder().isRepair(Boolean.TRUE).build();
+        } else {
+            school = schoolService.getSchool(code.toUpperCase());
+        }
         if (school != null) {
             return new ResponseEntity<>(school, HttpStatus.OK);
 

@@ -1,6 +1,5 @@
 package com.novo3.shopfront.controller;
 
-import com.novo3.shopfront.api.base.CreateTicketResponse;
 import com.novo3.shopfront.api.base.Ticket;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,10 +23,8 @@ import javax.validation.Valid;
 public class RepairController {
 
     @PostMapping(value = "/ticket", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<CreateTicketResponse> add(@Valid @RequestBody Ticket ticket) {
+    public ResponseEntity<Void> add(@Valid @RequestBody Ticket ticket) {
 
-        return new ResponseEntity<>(CreateTicketResponse.builder()
-                .isRepair(Boolean.TRUE)
-                .build(), HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
