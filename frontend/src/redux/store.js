@@ -3,7 +3,7 @@ import generalSlice from "./generalSlice";
 import orderDetailsSlice from "./orderDetailsSlice";
 import personalDetailsFormSlice from "./personalDetailsFormSlice";
 import selectedProductSlice from "./selectedProductSlice";
-
+import repairSlice from "./repairSlice";
 
 const store = configureStore({
     reducer:{
@@ -11,6 +11,7 @@ const store = configureStore({
         pdForm: personalDetailsFormSlice,
         orderDetails: orderDetailsSlice,
         selectedProduct: selectedProductSlice,
+        repair: repairSlice,
     }
 });
 
