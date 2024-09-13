@@ -127,10 +127,8 @@ const repairOrderSubmit = async (data) => {
   return await axios({
     method: "POST",
     url: baseURL + "/api/repair/ticket",
-    headers: {
-      Authorization: getToken(),
-    },
-    body: data
+    headers: {},
+    data: {...data}
   });
 };
 

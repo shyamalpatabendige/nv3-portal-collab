@@ -6,6 +6,7 @@ let initialState = {
   tabActiveKey : '1',
   viewProductId: 0,
   repairDetailsForm: {},
+  apiStatus: "PENDING"
 };
 
 const repairSlice = createSlice({
@@ -18,10 +19,14 @@ const repairSlice = createSlice({
     setRepairDetailsForm: (state, action) => {
       return { ...state, repairDetailsForm: action.payload };
     },
+    setIsRepairApiStatus: (state, action) => {
+      return { ...state, apiStatus: action.payload };
+    },
   },
 });
 
-export const getRepairFormDetails = (state => state?.repair?.repairDetailsForm)
+export const getRepairFormDetails = (state => state?.repair?.repairDetailsForm);
+export const getIsRepairApiStatus = (state => state?.repair?.apiStatus);
 
-export const { setIsRepair, setRepairDetailsForm } = repairSlice.actions;
+export const { setIsRepair, setRepairDetailsForm, setIsRepairApiStatus } = repairSlice.actions;
 export default repairSlice.reducer;

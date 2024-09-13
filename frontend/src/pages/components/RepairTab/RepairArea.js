@@ -1,15 +1,10 @@
 import "antd/dist/antd.css";
 import { Col, Container, Row } from "react-bootstrap";
-//import { Tabs } from "antd";
-import StudentProgram from "./StudentProgram";
-import DevicesAccessories from "./DevicesAccessories";
-import PersonalDetails from "./PersonalDetails";
-import ReviewOrder from "./ReviewOrder";
 import { useSelector } from "react-redux/es/exports";
 import { Steps } from "antd";
-import Accessories from "./Accessories";
 import RepairInputDetailsForm from "./RepairDetailsForms/RepairInputDetailsForm";//RepairConfirmDetailsForm
 import RepairConfirmDetailsForm from "./RepairDetailsForms/RepairConfirmDetailsForm";
+import ApiResponseScreen from "./RepairDetailsForms/ApiResponseScreen";
 
 const { Step } = Steps;
 //const { TabPane } = Tabs;
@@ -20,7 +15,7 @@ const { Step } = Steps;
 
 const RepairArea = () => {
   const { tabActiveKey } = useSelector((state) => state.general);
-console.log(typeof(tabActiveKey))
+
   return (
     <Container>
       <Row>
@@ -37,7 +32,7 @@ console.log(typeof(tabActiveKey))
                 //description="This is a description."
               />
               <Step
-                title="Successfully Submitted"
+                title="Submission Status"
                // subTitle="Left 00:00:08"
                 //description="This is a description."
               />
@@ -49,10 +44,7 @@ console.log(typeof(tabActiveKey))
           ) : parseInt(tabActiveKey) === 2 ? (
             <RepairConfirmDetailsForm />
           ) : parseInt(tabActiveKey) === 3 ? (
-            <RepairConfirmDetailsForm />
-          ) :parseInt(tabActiveKey) === 4 ? (
-            // <PersonalDetails />
-            <></>
+            <ApiResponseScreen />
           ) : (
             // <ReviewOrder />
             <></>

@@ -19,11 +19,13 @@ const MagazineSchoolCode = () => {
     return await fetchSchoolCode(schoolCode)
       .then((res) => {
         dispatch(enteredSchoolCodeFunc(schoolCode));
-        if(schoolCode === res?.data?.code){
+        if(handleDropDown === "Shop" && schoolCode === res?.data?.code){
           return navigate("/products");
-        } else if (res?.data?.isRepair){
+        } else if (handleDropDown === "Repair" && res?.data?.isRepair){
           dispatch(setIsRepair(true));
           return navigate("/repair");
+        } else {
+          return message.error("Please Enter The Valid Code !!!")
         }
       })
       .catch(() => message.error("Please Enter The Valid Code !!!"));
