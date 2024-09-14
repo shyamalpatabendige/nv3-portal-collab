@@ -3,6 +3,7 @@ package com.novo3.shopfront.controller;
 import com.novo3.shopfront.api.base.Order;
 import com.novo3.shopfront.api.base.Product;
 import com.novo3.shopfront.api.base.School;
+import com.novo3.shopfront.config.RepairConfigProperties;
 import com.novo3.shopfront.service.OrderService;
 import com.novo3.shopfront.service.ProductService;
 import com.novo3.shopfront.service.ReportService;
@@ -10,6 +11,7 @@ import com.novo3.shopfront.service.SchoolService;
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -25,6 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(value = "api")
@@ -35,20 +38,27 @@ import java.util.List;
 public class ShopfrontController {
 
     private final SchoolService schoolService;
-
     private final OrderService orderService;
-
     private final ProductService productService;
-
     private final ReportService reportService;
+    private final RepairConfigProperties repairProperties;
 
     @GetMapping(value = "/school/{code}", produces = "application/json")
     public ResponseEntity<School> getSchoolId(@PathVariable @NotNull String code) {
 
         log.info("Search school using code={}", code);
         School school;
-        if (code.equals("BGS-NRP") || code.equals("MGS-NRP")) {
-            school = School.builder().isRepair(Boolean.TRUE).build();
+        if (code.equals("BCC-NRP") || code.equals("MGS-NRP")) {
+            String codeValue = repairProperties.getCodes().get(code);
+            log.info("codeValue={}", codeValue);
+            log.info("covered={}", repairProperties.getCovered());
+            School s = schoolService.getSchool(codeValue);
+            school = School.builder()
+                    .isRepair(Boolean.TRUE)
+                    .img(s.getImg())
+                    .name(s.getName() + " - Repair Program")
+                    .coveredList(repairProperties.getCovered())
+                    .build();
         } else {
             school = schoolService.getSchool(code.toUpperCase());
         }

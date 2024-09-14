@@ -50,6 +50,7 @@ logging:
         shopfront:
           config:
             LoggingInterceptor: DEBUG
+    org.springframework.boot.context.properties: DEBUG
 #psql "host=portal-db-svr.postgres.database.azure.com port=5432 dbname=postgres user=pirtalpgadmin password=B0lsh01B00z# sslmode=require"
 
 #Dt$U#R&C3I%0M

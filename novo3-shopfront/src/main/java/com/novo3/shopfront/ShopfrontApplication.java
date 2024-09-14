@@ -1,6 +1,7 @@
 package com.novo3.shopfront;
 
 import com.novo3.shopfront.api.base.UserRegistration;
+import com.novo3.shopfront.config.RepairConfigProperties;
 import com.novo3.shopfront.repository.ProductRepository;
 import com.novo3.shopfront.repository.SchoolRepository;
 import com.novo3.shopfront.repository.UserRepository;
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -76,7 +78,7 @@ public class ShopfrontApplication {
             userService.addUser(user);
 
             SchoolEntity school = schoolRepository.save(SchoolEntity.builder()
-                    .code("BCC22")
+                    .code("BCC23")
                     .name("Ballarat Clarendon")
                     .banner("Welcome to the Ballarat Clarendon Device Purchase Portal for 2022/23")
                     .description("Novo3 is pleased to partner with Ballarat Clarendon College to provide the One-to-One learning devices for the school community in 2022/23. The notebook package as selected by the school is comprehensive and includes the device, carry case and onsite support for your child.\n" +

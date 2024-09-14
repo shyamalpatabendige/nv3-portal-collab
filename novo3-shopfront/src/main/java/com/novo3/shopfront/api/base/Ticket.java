@@ -6,6 +6,9 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
+import java.util.List;
 
 @Data
 @Builder
@@ -24,8 +27,8 @@ public class Ticket {
     private String studentName;
     @Length(min = 1, max = 10)
     private String level;
-    @NotEmpty
-    private String reason;
+    @Size(min = 1)
+    private List<String> reason;
     @NotEmpty
     private String incidentDate;
 

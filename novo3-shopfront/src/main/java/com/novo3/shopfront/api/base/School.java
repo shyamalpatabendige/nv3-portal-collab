@@ -7,6 +7,8 @@ import lombok.Data;
 
 import javax.validation.constraints.NotNull;
 
+import java.util.List;
+
 @Data
 @Builder
 @AllArgsConstructor
@@ -19,4 +21,5 @@ public class School {
     private String description;
     private String img;
     private Boolean isRepair;
+    private List<String> coveredList;
 }

@@ -21,3 +21,13 @@ report:
 xero:
   update:
     toggle: false
+
+school:
+  repair:
+    codes:
+      BCC-NRP: BCC23
+      MGS-NRP: MGS24
+    covered:
+      - Notebooks are covered for accidental damage.
+      - Units are to be repaired/reinstated to full working order.
+      - CRP covers the notebook, AC adapter and carry bag only. It does not cover any other software, peripherals or private items with the notebook.
