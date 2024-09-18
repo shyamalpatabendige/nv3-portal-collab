@@ -104,7 +104,13 @@ const RepairConfirmDetailsForm = () => {
 
       {/* Causes of Damage */}
       <Form.Item label="Tick the appropriate cause/s of the damage from the options below:">
-        <Title level={5}>{reason}</Title>
+        <Title level={5}>
+          <ol>
+            {reason?.map((eachReason) => (
+              <li key={eachReason}>{eachReason}</li>
+            ))}
+          </ol>
+        </Title>
       </Form.Item>
 
       {/* Date of Incident */}

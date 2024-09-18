@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { message } from "antd";
 import { enteredSchoolCodeFunc } from "../../../redux/generalSlice";
-import { setIsRepair } from "../../../redux/repairSlice";
+import { setIsRepair, setRepairProgramDetails } from "../../../redux/repairSlice";
 
 const MagazineSchoolCode = () => {
   const dispatch = useDispatch();
@@ -22,6 +22,7 @@ const MagazineSchoolCode = () => {
         if(handleDropDown === "Shop" && schoolCode === res?.data?.code){
           return navigate("/products");
         } else if (handleDropDown === "Repair" && res?.data?.isRepair){
+          dispatch(setRepairProgramDetails(res?.data))
           dispatch(setIsRepair(true));
           return navigate("/repair");
         } else {
