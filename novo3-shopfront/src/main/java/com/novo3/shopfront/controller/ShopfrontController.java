@@ -50,14 +50,14 @@ public class ShopfrontController {
         School school;
         if (code.equals("BCC-NRP") || code.equals("MGS-NRP")) {
             String codeValue = repairProperties.getCodes().get(code);
-            log.info("codeValue={}", codeValue);
-            log.info("covered={}", repairProperties.getCovered());
+            RepairConfigProperties.Detail detail= repairProperties.getDetails().get(code);
             School s = schoolService.getSchool(codeValue);
+            List<String> coveredList = repairProperties.getCovered();
             school = School.builder()
                     .isRepair(Boolean.TRUE)
                     .img(s.getImg())
-                    .name(s.getName() + " - Repair Program")
-                    .coveredList(repairProperties.getCovered())
+                    .name(detail.getName())
+                    .coveredList(coveredList)
                     .build();
         } else {
             school = schoolService.getSchool(code.toUpperCase());

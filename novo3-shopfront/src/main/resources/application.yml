@@ -31,3 +31,8 @@ school:
       - Notebooks are covered for accidental damage.
       - Units are to be repaired/reinstated to full working order.
       - CRP covers the notebook, AC adapter and carry bag only. It does not cover any other software, peripherals or private items with the notebook.
+    details:
+      BCC-NRP:
+        name: Ballarat Clarendon - Repair Program
+      MGS-NRP:
+        name: Melbourne Grammar School - Repair Program
