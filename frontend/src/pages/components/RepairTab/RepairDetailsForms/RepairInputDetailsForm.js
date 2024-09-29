@@ -150,7 +150,7 @@ const RepairInputDetailsForm = () => {
               label="Ticket Number"
               name="ticketNumber"
               rules={[
-                { required: true, message: "Please input the ticket number!" },
+                { required: true, message: "Please provide the ticket number!" },
                 {
                   min: 9,
                   max: 12,
@@ -167,7 +167,7 @@ const RepairInputDetailsForm = () => {
             <Form.Item
               label="Your Name"
               name="name"
-              rules={[{ required: true, message: "Please input your name!" }]}
+              rules={[{ required: true, message: "Please provide your name!" }]}
             >
               <Input />
             </Form.Item>
@@ -183,7 +183,7 @@ const RepairInputDetailsForm = () => {
               rules={[
                 {
                   required: true,
-                  message: "Please input your contact number!",
+                  message: "Please provide your contact number!",
                 },
               ]}
             >
@@ -199,7 +199,7 @@ const RepairInputDetailsForm = () => {
               rules={[
                 {
                   required: true,
-                  message: "Please input your email address!",
+                  message: "Please provide your email address!",
                   type: "email",
                 },
               ]}
@@ -216,7 +216,7 @@ const RepairInputDetailsForm = () => {
               label="Student Name"
               name="studentName"
               rules={[
-                { required: true, message: "Please input the student name!" },
+                { required: true, message: "Please provide the student name!" },
               ]}
             >
               <Input />
@@ -331,6 +331,8 @@ const RepairInputDetailsForm = () => {
           </Form.Item>
         )}
 
+        <Row gutter={16}>
+        <Col span={12}>
         {/* Date of Incident */}
         <Form.Item
           label="Date of Incident"
@@ -346,6 +348,9 @@ const RepairInputDetailsForm = () => {
             placement="topLeft"
           />
         </Form.Item>
+        
+        </Col>
+        </Row>
 
         {/* Submit Button */}
         <Form.Item>
