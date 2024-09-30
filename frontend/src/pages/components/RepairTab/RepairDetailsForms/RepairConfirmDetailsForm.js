@@ -15,6 +15,7 @@ const RepairConfirmDetailsForm = () => {
 
   // Extract form details from the Redux store
   const formDetails = useSelector(getRepairFormDetails);
+  const { enteredSchoolCode } = useSelector(state => state.general)
 
   // Destructure form details and set default values if data is missing
   const {
@@ -41,7 +42,7 @@ const RepairConfirmDetailsForm = () => {
   const handleConfirmForm = async () => {
     dispatch(setIsRepairApiStatus("PENDING"));
     dispatch(tabActiveKeyFunc(3));
-    return await repairOrderSubmit(formDetails)
+    return await repairOrderSubmit({...formDetails, schoolCode: enteredSchoolCode})
       .then((res) => {
         console.log(res);
         dispatch(setIsRepairApiStatus("SUCCESS"));
